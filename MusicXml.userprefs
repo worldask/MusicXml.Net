@@ -1,0 +1,25 @@
+﻿<Properties StartupItem="MusicXML/MusicXml.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="MusicXml/Domain/Part.cs">
+    <Files>
+      <File FileName="MusicXml.Unit.Tests/TestData/MusicXmlWithChords.xml" Line="1" Column="1" />
+      <File FileName="MusicXml.Unit.Tests/TestData/MusicXmlWithoutMeasureWidthAttribute.xml" Line="40" Column="20" />
+      <File FileName="MusicXml.Unit.Tests/TestData/MusicXmlWithStaffValues.xml" Line="1" Column="1" />
+      <File FileName="MusicXml.Unit.Tests/Properties/AssemblyInfo.cs" Line="1" Column="1" />
+      <File FileName="MusicXml.Unit.Tests/MusicXmlParserTests.cs" Line="112" Column="29" />
+      <File FileName="MusicXml/Domain/Backup.cs" Line="1" Column="1" />
+      <File FileName="MusicXml/Domain/Clef.cs" Line="1" Column="1" />
+      <File FileName="MusicXml/Domain/Encoding.cs" Line="1" Column="1" />
+      <File FileName="MusicXml/Domain/Forward.cs" Line="1" Column="1" />
+      <File FileName="MusicXml/Domain/Identification.cs" Line="1" Column="1" />
+      <File FileName="MusicXml/Domain/Key.cs" Line="1" Column="1" />
+      <File FileName="MusicXml/Domain/Lyric.cs" Line="1" Column="1" />
+      <File FileName="MusicXml/Domain/Measure.cs" Line="1" Column="1" />
+      <File FileName="MusicXml/Domain/Part.cs" Line="21" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

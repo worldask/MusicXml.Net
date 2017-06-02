@@ -168,6 +168,8 @@ namespace MusicXml
 
 			note.Pitch = GetPitch(noteNode);
 
+			note.Notations = GetNotations(noteNode);
+
 			var staffNode = noteNode.SelectSingleNode("staff");
 			if (staffNode != null)
 				note.Staff = Convert.ToInt32(staffNode.InnerText);
@@ -207,6 +209,54 @@ namespace MusicXml
 			}
 
 			return pitch;
+		}
+
+		private static Notations GetNotations(XmlNode noteNode)
+		{
+			var notations = new Notations();
+			var notationsNode = noteNode.SelectSingleNode("notations");
+			if (notationsNode != null)
+			{
+				var technicalNode = notationsNode.SelectSingleNode("technical");
+				if (technicalNode != null)
+					notations.Technical = GetTechnical(technicalNode);
+
+				var articulationsNode = notationsNode.SelectSingleNode("articulations");
+				if (articulationsNode != null)
+					notations.Articulations = articulationsNode.InnerXml;
+
+				var dynamicsNode = notationsNode.SelectSingleNode("dynamics");
+				if (dynamicsNode != null)
+					notations.Dynamics = dynamicsNode.InnerXml;
+			}
+			else
+			{
+				return null;
+			}
+
+			return notations;
+		}
+
+		private static Technical GetTechnical(XmlNode noteNode)
+		{
+			var technical = new Technical();
+
+			if (noteNode != null)
+			{
+				var fretNode = noteNode.SelectSingleNode("fret");
+				if (fretNode != null)
+					technical.Fret = Convert.ToInt32(fretNode.InnerText);
+
+				var stringNode = noteNode.SelectSingleNode("string");
+				if (stringNode != null)
+					technical.String = Convert.ToInt32(stringNode.InnerText);
+			}
+			else
+			{
+				return null;
+			}
+
+			return technical;
 		}
 
 		private static Lyric GetLyric(XmlNode noteNode)

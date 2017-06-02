@@ -26,5 +26,7 @@ namespace MusicXml.Domain
 		public bool IsChordTone { get; internal set; }
 
 		public bool IsRest { get; internal set; }
+
+		public Notations Notations { get; internal set; }
 	}
 }
