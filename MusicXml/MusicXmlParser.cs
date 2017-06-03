@@ -221,6 +221,14 @@ namespace MusicXml
 				if (technicalNode != null)
 					notations.Technical = GetTechnical(technicalNode);
 
+				var gp7Node = notationsNode.SelectSingleNode("//processing-instruction(\"GP7\")") as XmlProcessingInstruction;;
+				XmlDocument doc = new XmlDocument();
+				doc.LoadXml(gp7Node.Data);
+
+				var rootNode = doc.SelectSingleNode("root");
+				if (rootNode != null)
+					notations.Root = GetRoot(rootNode);
+
 				var articulationsNode = notationsNode.SelectSingleNode("articulations");
 				if (articulationsNode != null)
 					notations.Articulations = articulationsNode.InnerXml;
@@ -237,17 +245,17 @@ namespace MusicXml
 			return notations;
 		}
 
-		private static Technical GetTechnical(XmlNode noteNode)
+		private static Technical GetTechnical(XmlNode node)
 		{
 			var technical = new Technical();
 
-			if (noteNode != null)
+			if (node != null)
 			{
-				var fretNode = noteNode.SelectSingleNode("fret");
+				var fretNode = node.SelectSingleNode("fret");
 				if (fretNode != null)
 					technical.Fret = Convert.ToInt32(fretNode.InnerText);
 
-				var stringNode = noteNode.SelectSingleNode("string");
+				var stringNode = node.SelectSingleNode("string");
 				if (stringNode != null)
 					technical.String = Convert.ToInt32(stringNode.InnerText);
 			}
@@ -257,6 +265,24 @@ namespace MusicXml
 			}
 
 			return technical;
+		}
+
+		private static Root GetRoot(XmlNode node)
+		{
+			var Root = new Root();
+
+			if (node != null)
+			{
+				var brushNode = node.SelectSingleNode("brush");
+				if (brushNode != null)
+					Root.Brush = brushNode.Attributes["type"].InnerText;
+			}
+			else
+			{
+				return null;
+			}
+
+			return Root;
 		}
 
 		private static Lyric GetLyric(XmlNode noteNode)
