@@ -221,13 +221,17 @@ namespace MusicXml
 				if (technicalNode != null)
 					notations.Technical = GetTechnical(technicalNode);
 
-				var gp7Node = notationsNode.SelectSingleNode("//processing-instruction(\"GP7\")") as XmlProcessingInstruction;;
-				XmlDocument doc = new XmlDocument();
-				doc.LoadXml(gp7Node.Data);
+				var gp7Node = notationsNode.SelectSingleNode("//processing-instruction(\"GP7\")") as XmlProcessingInstruction;
+				if (gp7Node != null) {
+					XmlDocument doc = new XmlDocument ();
+					doc.LoadXml (gp7Node.Data);
 
-				var rootNode = doc.SelectSingleNode("root");
-				if (rootNode != null)
-					notations.Root = GetRoot(rootNode);
+					if (doc != null) {
+						var rootNode = doc.SelectSingleNode ("root");
+						if (rootNode != null)
+							notations.Root = GetRoot (rootNode);
+					}
+				}
 
 				var articulationsNode = notationsNode.SelectSingleNode("articulations");
 				if (articulationsNode != null)
