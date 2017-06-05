@@ -93,10 +93,12 @@ namespace MusicXml
 							{
 								MeasureElement measureElement = null;
 
-								if (node.Name == "note")
-								{
-									var newNote = GetNote(node);
-									measureElement = new MeasureElement {Type = MeasureElementType.Note, Element = newNote};
+								if (node.Name == "note") {
+									var newNote = GetNote (node);
+									measureElement = new MeasureElement { Type = MeasureElementType.Note, Element = newNote };
+								} else if (node.Name == "harmony") {
+									var newHarmony = GetHarmony (node);
+									measureElement = new MeasureElement { Type = MeasureElementType.Harmony, Element = newHarmony };
 								}
 								else if (node.Name == "backup")
 								{
@@ -146,6 +148,28 @@ namespace MusicXml
 			}
 
 			return backup;
+		}
+
+		private static Harmony GetHarmony(XmlNode node)
+		{
+			var harmony = new Harmony();
+
+			var rootNode = node.SelectSingleNode("root");
+			if (rootNode != null) {
+				var rootStepNode = node.SelectSingleNode("root-step");
+				if (rootStepNode != null)
+					harmony.rootStep = rootStepNode.InnerText;
+
+				var rootAlterNode = node.SelectSingleNode("root-alter");
+				if (rootAlterNode != null)
+					harmony.rootAlter = Convert.ToInt32(rootAlterNode.InnerText);
+			}
+
+			var kindNode = node.SelectSingleNode("voice");
+			if (kindNode != null)
+				harmony.Kind = kindNode.InnerText;
+
+			return harmony;
 		}
 
 		private static Note GetNote(XmlNode noteNode)

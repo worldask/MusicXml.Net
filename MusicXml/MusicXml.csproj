@@ -76,6 +76,7 @@
     <Compile Include="Domain\Technical.cs" />
     <Compile Include="Domain\Notations.cs" />
     <Compile Include="Domain\Root.cs" />
+    <Compile Include="Domain\Harmony.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="..\MusicXml\Microsoft.Net.Client.3.5">

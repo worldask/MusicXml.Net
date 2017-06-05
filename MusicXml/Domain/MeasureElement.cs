@@ -9,6 +9,7 @@
 	public enum MeasureElementType
 	{
 		Note,
+		Harmony,
 		Backup,
 		Forward
 	}
