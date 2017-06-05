@@ -156,16 +156,16 @@ namespace MusicXml
 
 			var rootNode = node.SelectSingleNode("root");
 			if (rootNode != null) {
-				var rootStepNode = node.SelectSingleNode("root-step");
+				var rootStepNode = rootNode.SelectSingleNode("root-step");
 				if (rootStepNode != null)
-					harmony.rootStep = rootStepNode.InnerText;
+					harmony.RootStep = rootStepNode.InnerText;
 
-				var rootAlterNode = node.SelectSingleNode("root-alter");
+				var rootAlterNode = rootNode.SelectSingleNode("root-alter");
 				if (rootAlterNode != null)
-					harmony.rootAlter = Convert.ToInt32(rootAlterNode.InnerText);
+					harmony.RootAlter = Convert.ToInt32(rootAlterNode.InnerText);
 			}
 
-			var kindNode = node.SelectSingleNode("voice");
+			var kindNode = node.SelectSingleNode("kind");
 			if (kindNode != null)
 				harmony.Kind = kindNode.InnerText;
 

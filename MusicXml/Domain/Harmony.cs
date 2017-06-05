@@ -6,14 +6,14 @@ namespace MusicXml
 	{
 		internal Harmony ()
 		{
-			rootStep = "";
-			rootAlter = 0;
+			RootStep = "";
+			RootAlter = 0;
 			Kind = "";
 		}
 
-		public int rootAlter { get; internal set; }
+		public int RootAlter { get; internal set; }
 
-		public string rootStep { get; internal set; }
+		public string RootStep { get; internal set; }
 
 		public string Kind { get; internal set; }
 
