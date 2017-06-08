@@ -1,3 +1,6 @@
+Fork from https://github.com/vdaron/MusicXml.Net
+Added Guitar & Ukulele TAB score support.
+
 MusicXml.Net
 ============
 
